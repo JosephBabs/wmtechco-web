@@ -8,7 +8,9 @@
                             <nuxt-link to="/" class="footer-logo">
                                 <img src="/images/logo/logo.png" alt="Logo">
                             </nuxt-link>
-                            <p>Lorem Ipsum is simply dummy text of the and typesetting industry. Lorem Ipsum has industry's standard dummy text ever printer took a galley.</p>
+                            <p>
+                                At WMTECHCO, we transcend boundaries to bring you unparalleled technology solutions and cutting-edge graphic services. As a premier tech consulting company, we stand at the intersection of innovation and excellence, dedicated to shaping a digital future that redefines possibilities.
+                            </p>
                             <div class="widget-newsletter">
                                 <form>
                                     <input type="email" class="form-control" placeholder="Enter your email">
