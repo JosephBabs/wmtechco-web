@@ -10,6 +10,7 @@
                             </nuxt-link>
                             <p>
                                 At WMTECHCO, we transcend boundaries to bring you unparalleled technology solutions and cutting-edge graphic services. As a premier tech consulting company, we stand at the intersection of innovation and excellence, dedicated to shaping a digital future that redefines possibilities.
+                                
                             </p>
                             <div class="widget-newsletter">
                                 <form>

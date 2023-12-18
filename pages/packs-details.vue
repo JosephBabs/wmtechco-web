@@ -3,7 +3,7 @@
         <Header />
         <OffCanvasMobileMenu />
         <PageTitle :title="pageTitleData.title" :breadcrumbTitle="pageTitleData.breadcrumbTitle" />
-        <ServiceDetailsWrapper @updatePageTitle="updatePageTitle"/>
+    <PackDetailsWrapper @updatePageTitle="updatePageTitle" />
         <ContactDevider />
         <Footer />
     </div>
@@ -29,7 +29,7 @@
             Header: () => import('@/components/Header'),
             OffCanvasMobileMenu: () => import('@/components/OffCanvasMobileMenu'),
             PageTitle: () => import('@/components/PageTitle'),
-            ServiceDetailsWrapper: () => import('@/components/ServiceDetailsWrapper'),
+            PackDetailsWrapper: () => import('@/components/PackDetailsWrapper'),
             ContactDevider: () => import('@/components/ContactDevider'),
             Footer: () => import('@/components/Footer'),
         },

@@ -8,28 +8,21 @@
                             <div class="thumb" data-aos="fade-up" data-aos-duration="1000">
                                 <img src="/images/photos/service1.jpg" alt="image">
                             </div>
-                            <nuxt-link to="/service" class="category">{{ServiceDetail.libelle_service}}</nuxt-link>
-                            <h2 class="title">{{ServiceDetail.libelle_service}}</h2>
+                            <nuxt-link to="/service" class="category">{{PackDetail.libelle_pack}}</nuxt-link>
+                            <h2 class="title">{{PackDetail.libelle_pack}}</h2>
                             <div class="separator-line">
                                 <img class="me-1" src="/images/shape/line-s2.png" alt="shape image">
                                 <img src="/images/shape/line-s1.png" alt="shape image">
                             </div>
-                            <p v-html="ServiceDetail.service_description"></p>
+                            <!-- <p v-html="Pa"></p> -->
                             
-                            <h2 class="title">About this service</h2>
+                            <h2 class="title">Services in this pack</h2>
                             <div class="separator-line">
                                 <img class="me-1" src="/images/shape/line-s2.png" alt="shape image">
                                 <img src="/images/shape/line-s1.png" alt="shape image">
                             </div>
-
-                            <p v-html="ServiceDetail.service_description"></p>
-
-                            <p class="mb-0">{{ServiceDetail.libelle_service}}</p>
                             <ul class="list-style2">
-                                <li><span class="icon"><i class="icofont-checked"></i></span> <span>Industry' standard dummy text ever since the type book.</span></li>
-                                <li><span class="icon"><i class="icofont-checked"></i></span> <span>It is a long established fact that reader will be distracted content.</span></li>
-                                <li><span class="icon"><i class="icofont-checked"></i></span> <span>Many desktop publishing packages and web page editors.</span></li>
-                                <li><span class="icon"><i class="icofont-checked"></i></span> <span>Variou version have evolved over the year sometimes accident.</span></li>
+                                <li v-for="service in PackDetail.pack_service" :key="service.id"><span class="icon"><i class="icofont-checked"></i></span> <span>{{service.libelle_service}}</span></li>
                             </ul>
                             <p class="mb-34">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry' standard dummy text ever since the 1500s, whean an unknown printer took an galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It wass popularsed in the 1960s with the release of Letraset sheets containing passages, and more recently.</p>
                             <h2 class="title">Find Solution.</h2>
@@ -66,7 +59,7 @@ import data from "~/data/data.json";
 
         data() {
     return {
-      ServiceDetail: {},
+      PackDetail: {},
     };
   },
   methods: {
@@ -76,18 +69,16 @@ import data from "~/data/data.json";
     },
 
       async getData() {
-        const apiLink = data.apiUrl.service_details_api_link;
+        const apiLink = data.apiUrl.packs_details_api_link;
         
-        const res = await fetch(apiLink+this.$route.query.service);
+        const res = await fetch(apiLink+this.$route.query.pack);
         const finalRes = await res.json();
-        console.log(finalRes.service);
-        const post = finalRes.service; // Assuming post is an object with properties
+        console.log(finalRes.pack);
+        const post = finalRes.pack; // Assuming post is an object with properties
 
-        this.ServiceDetail = post;
-        this.$emit('updatePageTitle', { title: post.libelle_service, breadcrumbTitle: post.libelle_service });
+        this.PackDetail = post;
+        this.$emit('updatePageTitle', { title: post.libelle_pack, breadcrumbTitle: post.libelle_pack });
    
-// Display specific properties in the alert
-      // alert("Post Title: " + post.title);
       },
 
       

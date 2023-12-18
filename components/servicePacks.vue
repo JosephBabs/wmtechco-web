@@ -9,7 +9,7 @@
       </div>
       <h4>{{ title }}</h4>
       <p>{{ desc }}</p>
-      <nuxt-link :to="'/service-details?service=' + id" class="btn-link"
+      <nuxt-link :to="'/packs-details?pack=' + id" class="btn-link"
         >Read More <i class="icon icofont-arrow-right"></i
       ></nuxt-link>
     </div>

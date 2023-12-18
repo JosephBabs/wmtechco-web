@@ -30,10 +30,12 @@
                 </div>
             </div>
             <div class="row icon-box-style1">
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-duration="1100" v-for="(service, index) in services" :key="index">
-                    <ServiceItem :service="service" />
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-duration="1100" v-for="service in services.slice(0, 3)" :key="service.id">
+                    <ServiceItem :id="service.id" :title="service.libelle_service" :desc="service.service_description" />
                 </div>
             </div>
+
+            <!-- <p>{{  services }}</p> -->
         </div>
         <div class="layer-shape">
             <img class="layer-shape-one" src="/images/shape/6.png" alt="shape">
@@ -43,42 +45,30 @@
 </template>
 
 <script>
+
+import data from "~/data/data.json";
     export default {
+        
         data() {
             return {
-                services: [
-                    {
-                        icon: "/images/icons/s1.png",
-                        title: "Web Development",
-                        desc: "Lorem Ipsum is simply dummy text the printing and typesetting industry has been the industry's standard."
-                    },
-                    {
-                        icon: "/images/icons/s2.png",
-                        title: "Market Analysis",
-                        desc: "Lorem Ipsum is simply dummy text the printing and typesetting industry has been the industry's standard."
-                    },
-                    {
-                        icon: "/images/icons/s3.png",
-                        title: "Brand Identity",
-                        desc: "Lorem Ipsum is simply dummy text the printing and typesetting industry has been the industry's standard."
-                    },
-                    {
-                        icon: "/images/icons/s4.png",
-                        title: "Business Consultation",
-                        desc: "Lorem Ipsum is simply dummy text the printing and typesetting industry has been the industry's standard."
-                    },
-                    {
-                        icon: "/images/icons/s5.png",
-                        title: "SEO Marketing",
-                        desc: "Lorem Ipsum is simply dummy text the printing and typesetting industry has been the industry's standard."
-                    },
-                    {
-                        icon: "/images/icons/s6.png",
-                        title: "UX & UI Design",
-                        desc: "Lorem Ipsum is simply dummy text the printing and typesetting industry has been the industry's standard."
-                    },
-                ]
+                services: [],
             }
         },
+    methods: {
+      async getDatas() {
+        const ServiceApiLink = data.apiUrl.service_api_link;
+        
+        const res = await fetch(ServiceApiLink);
+        const finalRes = await res.json();
+        this.services = finalRes.services;
+      },
+      // formatDate(date) {
+      // const options = { year: 'numeric', month: 'long', day: 'numeric' }
+      // return new Date(date).toLocaleDateString('en', options)
+    // },
+  },
+  mounted() {
+      this.getDatas()
+    },
     };
 </script>
