@@ -3,7 +3,10 @@
         "service_api_link": "https://app.wmtechco.com/api/services",
         "service_details_api_link": "https://app.wmtechco.com/api/services/",
         "packs_api_link": "https://app.wmtechco.com/api/packs",
-        "packs_details_api_link": "https://app.wmtechco.com/api/packs/"
+        "contact_post_api_link": "https://app.wmtechco.com/api/contacts",
+        "packs_details_api_link": "https://app.wmtechco.com/api/packs/",
+        "packs_checkout_api_link": "https://app.wmtechco.com/api/pack_checkout",
+        "service_checkout_api_link": "https://app.wmtechco.com/api/service_checkout"
     }
        
       

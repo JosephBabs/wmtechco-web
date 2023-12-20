@@ -5,10 +5,10 @@
         <PageTitle title="About Us" breadcrumbTitle="About" />
         <FeatureList />
         <AboutTwo />
-        <FunFactOne />
-        <TeamSection />
-        <BrandLogoSection />
-        <TestimonialOne />
+        <!-- <FunFactOne /> -->
+        <!-- <TeamSection /> -->
+        <!-- <BrandLogoSection />
+        <TestimonialOne /> -->
         <ContactDevider />
         <Footer />
     </div>

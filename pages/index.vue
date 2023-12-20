@@ -4,14 +4,14 @@
         <OffCanvasMobileMenu />
         <HeroSlider />
         <AboutOne />
-        <FunFactOne />
+        <!-- <FunFactOne /> -->
         <ServiceOne />
-        <FaqOne />
-        <TeamSection class="team-default-area" />
+        <!-- <FaqOne /> -->
+        <!-- <TeamSection class="team-default-area" /> -->
         <PortfolioSection />
-        <TestimonialOne />
+        <!-- <TestimonialOne />
         <BrandLogoSection />
-        <BlogSection />
+        <BlogSection /> -->
         <ContactDevider />
         <Footer />
     </div>

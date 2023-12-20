@@ -24,12 +24,23 @@
                             <ul class="list-style2">
                                 <li v-for="service in PackDetail.pack_service" :key="service.id"><span class="icon"><i class="icofont-checked"></i></span> <span>{{service.libelle_service}}</span></li>
                             </ul>
-                            <p class="mb-34">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry' standard dummy text ever since the 1500s, whean an unknown printer took an galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It wass popularsed in the 1960s with the release of Letraset sheets containing passages, and more recently.</p>
-                            <h2 class="title">Find Solution.</h2>
+                            <p class="mb-34">
+                                Throughout each service, we maintain open communication channels, ensuring clients are actively involved in the creative process and have ample opportunity for feedback and corrections. Our commitment is to deliver not just a service, but an experience that exceeds expectations.
+                                </p>
                             <div class="separator-line">
                                 <img class="me-1" src="/images/shape/line-s2.png" alt="shape image">
                                 <img src="/images/shape/line-s1.png" alt="shape image">
                             </div>
+                            <div class="row" >
+                                
+                                <div class="col-md-12" style="display: flex;
+                                     justify-content: flex-end;">
+                                <nuxt-link :to="'/pack-checkout?pack_id=' + this.$route.query.pack +'&&pack_name=' + PackDetail.libelle_pack +'&&pack_price='+ PackDetail.price_pack" class="btn btn-success btn-lg" >
+                                    Purchase Pack 
+                                    <i class="icon icofont-cart"></i>
+                                </nuxt-link>
+                            </div>
+                        </div>
                         </div>
                         
                         <!-- <div class="sidebar-area">

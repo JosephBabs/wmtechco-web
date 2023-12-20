@@ -8,7 +8,7 @@
         <img src="/images/shape/line-s1.png" alt="Image" />
       </div>
       <h4>{{ title }}</h4>
-      <p>{{ desc }}</p>
+      <p v-html="desc.substring(0, 120)"></p>
       <nuxt-link :to="'/service-details?service=' + id" class="btn-link"
         >Read More <i class="icon icofont-arrow-right"></i
       ></nuxt-link>
