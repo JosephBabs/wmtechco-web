@@ -39,7 +39,7 @@
                         </h2></div>
                               <div class="col-md-6">
                                   <div class="form-group">
-                                  <label for="qty" class="title text-light">Quantity</label>
+                                  
                                   </div>
                               </div>
                               <div class="col-md-6">
@@ -51,7 +51,7 @@
                             min="1"
                               v-model="form.quantity"
                               
-                                  @change="changeQty"
+                                  @change="changeQty" hidden
                             /></div>
                               </div>
                           </div>

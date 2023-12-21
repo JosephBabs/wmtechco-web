@@ -1,11 +1,11 @@
 <template>
   <div class="icon-box-item">
     <div class="icon-box">
-      <img class="icon-img" src="/images/icons/s1.png" alt="Icon" />
+      <img class="icon-img" :src="'https://app.wmtechco.com/storage/'+icon" alt="Icon" />
     </div>
     <div class="content">
       <div class="separator-line">
-        <img src="/images/shape/line-s1.png" alt="Image" />
+        <img src="images/shape/line-s1.png" alt="Image" />
       </div>
       <h4>{{ title }}</h4>
       <p v-html="desc.substring(0, 120)"></p>
@@ -33,6 +33,10 @@ export default {
       required: true,
     },
     desc: {
+      type: String,
+      required: true,
+    },
+    icon: {
       type: String,
       required: true,
     },

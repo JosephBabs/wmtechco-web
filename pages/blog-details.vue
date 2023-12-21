@@ -2,8 +2,11 @@
     <div class="blog-page-wrapper">
         <Header />
         <OffCanvasMobileMenu />
-        <PageTitle title="Finding The Best Business Solution." breadcrumbTitle="Blog" />
-        <BlogDetailsWrapper />
+        <!-- <PageTitle title="Finding The Best Business Solution." breadcrumbTitle="Blog" />
+        <BlogDetailsWrapper /> -->
+        
+        <PageTitle :title="pageTitleData.title" :breadcrumbTitle="pageTitleData.breadcrumbTitle" />
+        <BlogDetailsWrapper @updatePageTitle="updatePageTitle" />
         <ContactDevider />
         <Footer />
     </div>
@@ -11,6 +14,20 @@
 
 <script>
     export default {
+        data() {
+    return {
+      pageTitleData: {
+        title: '',
+        breadcrumbTitle: 'loading pack details....',
+      },
+    };
+  },
+  methods: {
+    updatePageTitle({ title, breadcrumbTitle }) {
+      this.pageTitleData.title = title;
+      this.pageTitleData.breadcrumbTitle = breadcrumbTitle;
+    },
+  },
         components: {
             Header: () => import('@/components/Header'),
             OffCanvasMobileMenu: () => import('@/components/OffCanvasMobileMenu'),

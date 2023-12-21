@@ -14,9 +14,9 @@
                                 </div>
                                 <div class="content">
                                     <div class="meta">
-                                        <nuxt-link to="/blog" class="post-date">{{ blog.date }}</nuxt-link>
-                                        <nuxt-link to="/blog" class="post-comment"><i class="icofont-speech-comments"></i>{{ blog.comment }}</nuxt-link>
-                                        <nuxt-link to="/blog" class="post-like"><i class="icofont-heart"></i>{{ blog.like }}</nuxt-link>
+                                        <nuxt-link to="/blog" class="post-date">{{ formatDate(blog.created_at) }}</nuxt-link>
+                                        <!-- <nuxt-link to="/blog" class="post-comment"><i class="icofont-speech-comments"></i>{{ blog.comment }}</nuxt-link>
+                                        <nuxt-link to="/blog" class="post-like"><i class="icofont-heart"></i>{{ blog.like }}</nuxt-link> -->
                                         <nuxt-link to="/blog" class="post-author"><i class="icofont-user-alt-7"></i>{{ blog.author }}</nuxt-link>
                                     </div>
                                     <h4 class="title">
@@ -26,27 +26,27 @@
                                         <img class="me-1" src="/images/shape/line-s2.png" alt="shape">
                                         <img src="/images/shape/line-s1.png" alt="shape">
                                     </div>
-                                    <p>{{ blog.excerpt }}</p>
-                                    <nuxt-link to="/blog-details" class="btn btn-theme btn-border btn-gray">Read More <i class="icon icofont-long-arrow-right"></i></nuxt-link>
+                                    <p v-html="blog.content.substring(0, 300)"></p>
+                                    <nuxt-link :to="'/blog-details?post=' + blog.id" class="btn btn-theme btn-border btn-gray">Read More <i class="icon icofont-long-arrow-right"></i></nuxt-link>
                                 </div>
                             </div>
                             <!--== End Blog Post Item ==-->
 
-                            <Pagination />
+                            <!-- <Pagination /> -->
                         </div>
 
                         <div class="sidebar-area">
                             <WidgetSearch />
 
-                            <ServiceCategoryWidget />
+                            <!-- <ServiceCategoryWidget /> -->
 
-                            <WidgetVideo />
+                            <!-- <WidgetVideo /> -->
 
                             <WidgetSocial />
 
-                            <WidgetRecentPost />
+                            <!-- <WidgetRecentPost /> -->
 
-                            <WidgetTags />
+                            <!-- <WidgetTags /> -->
                         </div>
 
                     </div>
@@ -57,7 +57,17 @@
 </template>
 
 <script>
+
+import data from "~/data/data.json";
     export default {
+        props: {
+    desc: {
+      type: String,
+    //   required: true,
+    },
+    
+    
+  },
         components: {
             Pagination: () => import('@/components/Pagination'),
             WidgetSearch: () => import('@/components/WidgetSearch'), 
@@ -70,49 +80,36 @@
 
         data() {
             return {
-                blogs: [
-                    {
-                        imgSrc: "/images/blog/b1.jpg",
-                        title: "We work in the fields of UI/UX design and art direction.",
-                        excerpt: "Lorem Ipsum is simply dummy text the printing and typesetting industry lorem ipsum has industry' standard dummy text ever since the 1500s, whean an unknown printer took galle scrambled it to make a type specimen.",
-                        date: "21 March, 2021",
-                        comment: 2566,
-                        like: 750,
-                        author: "Alvin Malone",
-                        category: "Business/Marketing"
-                    },
-                    {
-                        imgSrc: "/images/blog/b2.jpg",
-                        title: "printing and type setting industry has been printer.",
-                        excerpt: "Lorem Ipsum is simply dummy text the printing and typesetting industry lorem ipsum has industry' standard dummy text ever since the 1500s, whean an unknown printer took galle scrambled it to make a type specimen.",
-                        date: "17 June, 2021",
-                        comment: 3345,
-                        like: 980,
-                        author: "Andrew Rechard",
-                        category: "Development/Design"
-                    },
-                    {
-                        imgSrc: "/images/blog/b3.jpg",
-                        title: "We work in the fields of UI/UX design and art direction.",
-                        excerpt: "Lorem Ipsum is simply dummy text the printing and typesetting industry lorem ipsum has industry' standard dummy text ever since the 1500s, whean an unknown printer took galle scrambled it to make a type specimen.",
-                        date: "28 May, 2021",
-                        comment: 1450,
-                        like: 380,
-                        author: "Antony Gomes",
-                        category: "Fashion/Style"
-                    },
-                    {
-                        imgSrc: "/images/blog/b4.jpg",
-                        title: "Printer took galle scrambled it to make a type specimen.",
-                        excerpt: "Lorem Ipsum is simply dummy text the printing and typesetting industry lorem ipsum has industry' standard dummy text ever since the 1500s, whean an unknown printer took galle scrambled it to make a type specimen.",
-                        date: "12 August, 2020",
-                        comment: 1780,
-                        like: 1290,
-                        author: "Falguni",
-                        category: "Electronics/Gadget"
-                    },
-                ]
+                
+                blogs: []
             }
         },
+    methods: {
+      async getData() {
+        const apiLink = data.apiUrl.posts_api;
+        
+        const res = await fetch(apiLink);
+        const finalRes = await res.json();
+        this.blogs = finalRes.posts;
+      },
+      formatDate(date) {
+      const options = { year: 'numeric', month: 'long', day: 'numeric' }
+      return new Date(date).toLocaleDateString('en', options)
+    },
+    truncatedDescription(description) {
+      if (description) {
+        // Truncate the description to the first 100 characters
+        return description.substring(0, 300);
+      }
+      // If the description is empty, you can provide a default value or handle it accordingly
+      return "No description available";
+    }
+    },
+    mounted() {
+      this.getData()
+    },
+    computed: {
+    
+  }
     };
 </script>

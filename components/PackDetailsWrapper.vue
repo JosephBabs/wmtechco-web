@@ -6,7 +6,7 @@
                     <div class="service-details-column">
                         <div class="service-details-content">
                             <div class="thumb" data-aos="fade-up" data-aos-duration="1000">
-                                <img src="/images/photos/service1.jpg" alt="image">
+                                <img :src="'https://app.wmtechco.com/storage/'+PackDetail.image_pack" alt="image">
                             </div>
                             <nuxt-link to="/service" class="category">{{PackDetail.libelle_pack}}</nuxt-link>
                             <h2 class="title">{{PackDetail.libelle_pack}}</h2>
